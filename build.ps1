@@ -1,1 +1,1 @@
-docker build --tag trevorsullivan/myapp $PSScriptRoot
+docker build --tag chrostmarcin/myapp $PSScriptRoot
