@@ -16,13 +16,9 @@ jobs:
         echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
         sudo apt-get update
         sudo apt-get install trivy --yes
-    - uses: actions/cache@v4
-      name: Cache Trivy DB
-      with:
-        path: ${{ env.CACHE_DIR }}
-        key: trivy-db
-    - run: trivy image python --download-db-only --cache-dir ${{ env.CACHE_DIR }}
-    - run: trivy image ubuntu:focal-20200703
-    - run: trivy image ubuntu:jammy-20211029
-    - run: trivy image ubuntu:bionic-20171114
-    - run: trivy image mysql:5.7.26
+    - name: Building container image
+      shell: pwsh
+      run: ./build.ps1
+    - name: Scan Container Image
+      run: trivy image mycoolcontainer --exit-code 167
+      
