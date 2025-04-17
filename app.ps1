@@ -1,5 +1,12 @@
-Start-PodeServer -ScriptBlock {
-  Add-PodeEndpoint -Address 0.0.0.0 -Port 8000 -Protocol Http
-  
-  Add-PodeRoute -Method Get -Path / -ScriptBlock { Write-PodeHtmlResponse -Value '<h1>Hello v1.1</h1>' }
-}
+// server.js
+const express = require('express');
+const app = express();
+const port = 8000;
+
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}/`);
+});
