@@ -21,7 +21,7 @@ jobs:
       run: ./build.ps1
     - name: Push Image
       run: |
-        docker login -u chrostmarcin -p ${{ secrets.DOCKER_PASSWORD}}
+        docker login -u chrostmarcin -p ${{ secrets.DOCKER_HUB_TOKEN}}
         docker push chrostmarcin/myapp
     - name: Scan Container Image
       run: trivy image mycoolcontainer --exit-code 167
