@@ -22,7 +22,7 @@ jobs:
     - name: Push Image
       run: |
         docker login -u chrostmarcin -p ${{ secrets.DOCKER_HUB_TOKEN}}
-        docker push chrostmarcin/myapp
+        docker push chrostmarcin/myapp:1.1
     - name: Scan Container Image
       run: trivy image docker.io/chrostmarcin/myapp --exit-code 167
       
