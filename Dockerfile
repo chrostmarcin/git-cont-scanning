@@ -1,7 +1,10 @@
-FROM mcr.microsoft.com/powershell
+from flask import Flask
 
-WORKDIR /app
+app = Flask(__name__)
 
-ADD ["app.ps1", "/app/"]
+@app.route("/")
+def hello_world():
+    return "Hello, World!"
 
-ENTRYPOINT ["pwsh", "-File", "/app/app.ps1"]
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
