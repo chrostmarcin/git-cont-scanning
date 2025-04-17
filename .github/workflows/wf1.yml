@@ -19,6 +19,10 @@ jobs:
     - name: Building container image
       shell: pwsh
       run: ./build.ps1
+    - name: Push Image
+      run: |
+        docker login -u chrostmarcin -p ${{ secrets.DOCKER_PASSWORD}}
+        docker push chrostmarcin/myapp
     - name: Scan Container Image
       run: trivy image mycoolcontainer --exit-code 167
       
