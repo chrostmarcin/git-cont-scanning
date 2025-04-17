@@ -1,2 +1,2 @@
-docker build --tag chrostmarcin/myapp $PSScriptRoot
+docker build --tag chrostmarcin/myapp:1.1 $PSScriptRoot
 
